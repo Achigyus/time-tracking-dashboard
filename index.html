@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Time tracking dashboard</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+
+  <main class="container">
+    <div class="content_wrap">
+      <div class="cards">
+
+        <div class="main_card">
+          <div class="main_card_top">
+            <div class="main_card_top_left">
+              <div class="main_card_top_left_img_cont">
+                <img src="./images/image-jeremy.png" alt="users profile picture" class="main_card_top_left_img">
+              </div>
+
+              <h1 class="main_card_top_left_h1"><span>Report for</span><br>Jeremy Robson</h1>
+            </div>
+          </div>
+          <div class="main_card_bottom" id="main_card_bottom">
+            <p class="main_card_bottom_time_select fw400" id="daily" onclick="renderData('daily', fetchedData)">Daily</p>
+            <p class="main_card_bottom_time_select fw400" id="weekly" onclick="renderData('weekly', fetchedData)">Weekly</p>
+            <p class="main_card_bottom_time_select fw400" id="monthly" onclick="renderData('monthly', fetchedData)">Monthly</p>
+          </div>
+        </div>
+
+        <div class="task_cards" id="task_cards">
+
+          <div class="task_card work">
+            <div class="task_card_top">
+              <div class="task_card_top_img_cont">
+                <img src="./images/icon-work.svg" alt="work icon" class="task_card_top_img">
+              </div>
+            </div>
+            <div class="task_card_bottom">
+              <div class="task_card_bottom_title_dd">
+                <p class="task_card_bottom_title fw400">Work</p>
+                <div class="task_card_bottom_dd">
+                  <img src="./images/icon-ellipsis.svg" alt="drop down icon" class="task_card_bottom_dd_img">
+                </div>
+              </div>
+  
+              <div class="task_card_bottom_present_last">
+                <p class="task_card_bottom_present fw400">--hrs</p>
+                <p class="task_card_bottom_last fw400">Last Week - 7hrs</p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="task_card play">
+            <div class="task_card_top">
+              <div class="task_card_top_img_cont">
+                <img src="./images/icon-play.svg" alt="work icon" class="task_card_top_img">
+              </div>
+            </div>
+            <div class="task_card_bottom">
+              <div class="task_card_bottom_title_dd">
+                <p class="task_card_bottom_title fw400">Play</p>
+                <div class="task_card_bottom_dd">
+                  <img src="./images/icon-ellipsis.svg" alt="drop down icon" class="task_card_bottom_dd_img">
+                </div>
+              </div>
+  
+              <div class="task_card_bottom_present_last">
+                <p class="task_card_bottom_present fw400">5hrs</p>
+                <p class="task_card_bottom_last fw400">Last Week - 7hrs</p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="task_card study">
+            <div class="task_card_top">
+              <div class="task_card_top_img_cont">
+                <img src="./images/icon-study.svg" alt="work icon" class="task_card_top_img">
+              </div>
+            </div>
+            <div class="task_card_bottom">
+              <div class="task_card_bottom_title_dd">
+                <p class="task_card_bottom_title fw400">Study</p>
+                <div class="task_card_bottom_dd">
+                  <img src="./images/icon-ellipsis.svg" alt="drop down icon" class="task_card_bottom_dd_img">
+                </div>
+              </div>
+  
+              <div class="task_card_bottom_present_last">
+                <p class="task_card_bottom_present fw400">5hrs</p>
+                <p class="task_card_bottom_last fw400">Last Week - 7hrs</p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="task_card exercise">
+            <div class="task_card_top">
+              <div class="task_card_top_img_cont">
+                <img src="./images/icon-exercise.svg" alt="work icon" class="task_card_top_img">
+              </div>
+            </div>
+            <div class="task_card_bottom">
+              <div class="task_card_bottom_title_dd">
+                <p class="task_card_bottom_title fw400">Exercise</p>
+                <div class="task_card_bottom_dd">
+                  <img src="./images/icon-ellipsis.svg" alt="drop down icon" class="task_card_bottom_dd_img">
+                </div>
+              </div>
+  
+              <div class="task_card_bottom_present_last">
+                <p class="task_card_bottom_present fw400">5hrs</p>
+                <p class="task_card_bottom_last fw400">Last Week - 7hrs</p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="task_card social">
+            <div class="task_card_top">
+              <div class="task_card_top_img_cont">
+                <img src="./images/icon-social.svg" alt="work icon" class="task_card_top_img">
+              </div>
+            </div>
+            <div class="task_card_bottom">
+              <div class="task_card_bottom_title_dd">
+                <p class="task_card_bottom_title fw400">Social</p>
+                <div class="task_card_bottom_dd">
+                  <img src="./images/icon-social.svg" alt="drop down icon" class="task_card_bottom_dd_img">
+                </div>
+              </div>
+  
+              <div class="task_card_bottom_present_last">
+                <p class="task_card_bottom_present fw400">5hrs</p>
+                <p class="task_card_bottom_last fw400">Last Week - 7hrs</p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="task_card self_care">
+            <div class="task_card_top">
+              <div class="task_card_top_img_cont">
+                <img src="./images/icon-self-care.svg" alt="work icon" class="task_card_top_img">
+              </div>
+            </div>
+            <div class="task_card_bottom">
+              <div class="task_card_bottom_title_dd">
+                <p class="task_card_bottom_title fw400">Self Care</p>
+                <div class="task_card_bottom_dd">
+                  <img src="./images/icon-ellipsis.svg" alt="drop down icon" class="task_card_bottom_dd_img">
+                </div>
+              </div>
+  
+              <div class="task_card_bottom_present_last">
+                <p class="task_card_bottom_present fw400">5hrs</p>
+                <p class="task_card_bottom_last fw400">Last Week - 7hrs</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/Achigyus">Achigyus</a>.
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
